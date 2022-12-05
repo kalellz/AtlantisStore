@@ -1,0 +1,58 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+}
+@font-face {
+  font-family: 'inter-Bold';
+  src: url('../public/fonts/inter/Inter-Bold.ttf');
+}
+@font-face {
+  font-family: 'inter-Black';
+  src: url('../public/fonts/inter/Inter-Black.ttf');
+}
+@font-face {
+  font-family: 'inter-ExtraBold';
+  src: url('../public/fonts/inter/Inter-ExtraBold.ttf');
+}
+@font-face {
+  font-family: 'inter-Medium';
+  src: url('../public/fonts/inter/Inter-Medium.ttf');
+}
+@font-face {
+  font-family: 'inter-Regular';
+  src: url('../public/fonts/inter/Inter-Regular.ttf');
+}
+@font-face {
+  font-family: 'inter-SemiBold';
+  src: url('../public/fonts/inter/Inter-SemiBold.ttf');
+}
+@font-face {
+  font-family: 'poppins-SemiBold';
+  src: url('../public/fonts/Poppins/Poppins-SemiBold.ttf');
+}
+@font-face {
+  font-family: 'poppins-Medium';
+  src: url('../public/fonts/Poppins/Poppins-Medium.ttf');
+}

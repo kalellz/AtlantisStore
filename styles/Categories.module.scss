@@ -1,0 +1,26 @@
+.main{
+    background-color: #ED0842;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'poppins-SemiBold';
+    flex-wrap: wrap;
+    padding: 2em;
+}
+.links{
+    font-size: 2em;
+    padding: 0 1em;
+    font-family: 'poppins-SemiBold';
+    transition: all .5s;
+}
+.links:hover{
+    color: #121212;
+}
+@media only screen and (max-width: 720px) {
+    .main{
+        flex-direction: column;
+        text-align: center;
+    }
+}

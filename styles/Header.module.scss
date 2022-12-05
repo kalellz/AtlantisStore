@@ -1,0 +1,131 @@
+.mainheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2em;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 10vh;
+  align-items: center;
+}
+
+.headerlogo {
+  cursor: pointer;
+  font-family: 'inter-extrabold';
+  font-size: 1em;
+  margin: 0 3em 0 0;
+}
+
+.headerlinks {
+  a {
+    font-family: 'inter-medium';
+  }
+
+}
+
+.headerbuttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headerbutton2 {
+  button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 12px;
+    padding: .5em 2em .5em 1em;
+    color: white;
+    background: #ED0842;
+    border: none;
+    letter-spacing: 0.05em;
+    border-radius: 99px;
+  }
+
+  button svg {
+    margin-right: 1px;
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  button span {
+    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+    transform: translateX(7px);
+  }
+
+  button:hover svg {
+    transform: translateX(5px) rotate(90deg);
+  }
+
+  button:active {
+    transform: scale(0.99);
+  }
+}
+
+.headerbutton1 {
+  button {
+    cursor: pointer;
+    --color: #ED0842;
+    font-family: inherit;
+    display: inline-block;
+    line-height: 2.5em;
+    padding: .13em 2em;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color .5s;
+    z-index: 1;
+    font-size: 12px;
+    border-radius: 99px;
+    font-weight: 500;
+    color: var(--color);
+    background-color: transparent;
+  }
+
+  button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--color);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+  }
+
+  button:hover {
+    color: #fff;
+  }
+
+  button:before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+  }
+
+  button:hover:before {
+    top: -30px;
+    left: -30px;
+  }
+
+  button:active:before {
+    transition: background 0s;
+  }
+
+  button:active {
+    transform: scale(0.99);
+   }   
+}
+
+@media only screen and (max-width: 720px) {
+  .mainheader{
+    width: 100vw;
+    height: auto;
+    flex-direction: column;
+  }
+}
