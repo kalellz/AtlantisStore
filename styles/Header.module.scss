@@ -17,13 +17,20 @@
   font-family: 'inter-extrabold';
   font-size: 1em;
   margin: 0 3em 0 0;
+  transition: .5s all;
+}
+.headerlogo:hover{
+  transform: scale(0.96);
 }
 
 .headerlinks {
   a {
     font-family: 'inter-medium';
   }
-
+  transition: .5s all;
+}
+.headerlinks:hover{
+  transform: scale(0.96);
 }
 
 .headerbuttons {
