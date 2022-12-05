@@ -8,9 +8,6 @@ import Highlights from '../components/highlights'
 export default function Home() {
   return (
     <div className={styles.container} >
-      <div>
-
-      </div>
       <Head>
         <title>Atlantis Store</title>
         <link rel="icon" href="/favicon.ico" />
