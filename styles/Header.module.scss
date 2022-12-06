@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2em;
+  padding: 0 4em;
 }
 
 .header {
@@ -19,7 +19,8 @@
   margin: 0 3em 0 0;
   transition: .5s all;
 }
-.headerlogo:hover{
+
+.headerlogo:hover {
   transform: scale(0.96);
 }
 
@@ -27,9 +28,11 @@
   a {
     font-family: 'inter-medium';
   }
+
   transition: .5s all;
 }
-.headerlinks:hover{
+
+.headerlinks:hover {
   transform: scale(0.96);
 }
 
@@ -126,11 +129,27 @@
 
   button:active {
     transform: scale(0.99);
-   }   
+  }
+}
+
+.user {
+  display: flex;
+
+  .setaUser {
+    cursor: pointer;
+    position: absolute;
+    right: 4em;
+    top: 6%;
+  }
+
+  .userImage {
+    position: relative;
+
+  }
 }
 
 @media only screen and (max-width: 720px) {
-  .mainheader{
+  .mainheader {
     width: 100vw;
     height: auto;
     flex-direction: column;

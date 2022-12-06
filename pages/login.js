@@ -15,27 +15,29 @@ export default function Login() {
     const [err, setErr] = useState('')
     const [disabled, setDisabled] = useState(false)
 
-    async function Login() {
-        try {
-            const userCreated = await LoginCall(email, password)
-            storage("usuario-logado", userCreated);
-            setDisabled(true)
-            ref.current.continuousStart()
-            setTimeout(() => {
+    async function Login(event) {
+        if (event.key == "Enter" || event == "Enter") {
+            try {
+                const userCreated = await LoginCall(email, password)
+                storage("usuario-logado", userCreated);
+                setDisabled(true)
+                ref.current.continuousStart()
+                setTimeout(() => {
+                    ref.current.complete();
+                }, 2400);
+                setTimeout(() => {
+                    router.push('/');
+                }, 3000);
+            } catch (err) {
                 ref.current.complete();
-            }, 2400);
-            setTimeout(() => {
-                router.push('/');
-            }, 3000);
-        } catch (err) {
-            ref.current.complete();
-            setDisabled(false);
-            if (err.response.status === 401) {
-                setErr(err.response.data.erro);
+                setDisabled(false);
+                if (err.response.status === 401) {
+                    setErr(err.response.data.erro);
+                }
+                setTimeout(() => {
+                    setErr("");
+                }, 3000);
             }
-            setTimeout(() => {
-                setErr("");
-            }, 3000);
         }
     }
     return (
@@ -56,11 +58,11 @@ export default function Login() {
                 <div className={logup.SignInfos}>
                     <div className={logup.SignInputs}>
                         <div className={logup.form__group}>
-                            <input placeholder="Name" className={logup.form__field} type="email" value={email} onChange={e => setEmail(e.target.value)} />
+                            <input placeholder="Name" className={logup.form__field} onKeyDown={Login} type="email" value={email} onChange={e => setEmail(e.target.value)} />
                             <label className={logup.form__label} for="name">Email</label>
                         </div>
                         <div className={logup.form__group}>
-                            <input placeholder="Name" className={logup.form__field} type="password" value={password} onChange={e => setPassword(e.target.value)} />
+                            <input placeholder="Name" className={logup.form__field} onKeyDown={Login} type="password" value={password} onChange={e => setPassword(e.target.value)} />
                             <label className={logup.form__label} for="name">Senha</label>
                         </div>
                     </div>

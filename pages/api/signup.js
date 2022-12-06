@@ -5,7 +5,8 @@ export default async function signup(req, res) {
         const user = {
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            icon: null
         }
         if (!user.name) {
             throw new Error('Insira um nome')
