@@ -1,6 +1,7 @@
 import logup from '../styles/Logup.module.scss'
 import Link from 'next/link'
 import LoadingBar from 'react-top-loading-bar'
+import storage from "local-storage";
 import { SignUpCall } from './api/apis.js'
 import { useRef } from 'react'
 import { useState } from 'react'
@@ -18,11 +19,15 @@ export default function SignUp() {
     async function SignClick() {
         try {
             const userCreated = await SignUpCall(name, email, password)
+            storage("usuario-logado", userCreated);
             setDisabled(true)
             ref.current.continuousStart()
             setTimeout(() => {
-                router.push('/login')
-            }, 3000)
+                ref.current.complete();
+            }, 2400);
+            setTimeout(() => {
+                router.push('/');
+            }, 3000);
         } catch (err) {
             ref.current.complete();
 			setDisabled(false);

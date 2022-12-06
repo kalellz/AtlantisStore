@@ -13,7 +13,7 @@ export async function SignUpCall(name, email, password) {
         email: email,
         password: password
     })
-    return r
+    return r.data
 }
 
 

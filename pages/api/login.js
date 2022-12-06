@@ -13,7 +13,7 @@ export default async function login(req, res) {
             throw new Error('Insira uma senha')
         }
         const db = await connectToDatabase(process.env.MONGODB_URI)
-        const collection = db.collection('logins')
+        const collection = db.collection('users')
         const response = await collection.findOne(user)
         if (!response)
             throw new Error('Usuario Não Encontrado')

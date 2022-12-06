@@ -17,16 +17,16 @@ export default function Login() {
 
     async function Login() {
         try {
-            const userCreated = await LoginCall( email, password )
+            const userCreated = await LoginCall(email, password)
             storage("usuario-logado", userCreated);
             setDisabled(true)
             ref.current.continuousStart()
             setTimeout(() => {
-				ref.current.complete();
-			}, 2400);
-			setTimeout(() => {
-				router.push('/');
-			}, 3000);
+                ref.current.complete();
+            }, 2400);
+            setTimeout(() => {
+                router.push('/');
+            }, 3000);
         } catch (err) {
             ref.current.complete();
             setDisabled(false);
