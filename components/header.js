@@ -58,10 +58,12 @@ export default function Header(props) {
             {popupConfig == 0
                 ? <div style={{ position: "absolute" }}></div>
                 : <div className={header.popup}>
-                    <div style={{display:"flex", justifyContent:"space-around",alignItems:"center", width:"7vw", margin:"1em"}}>
-                        <Image src={configIcon} width={20} height={20} style={{filter:"invert(1)"}} />
-                        <Link href="/config">Configurações</Link>
-                    </div>
+                    <Link href="/config">
+                        <div style={{ display: "flex", justifyContent: "space-around", alignItems: "center", width: "7vw", margin: "1em" }}>
+                            <Image src={configIcon} width={20} height={20} style={{ filter: "invert(1)" }} />
+                            Configurações
+                        </div>
+                    </Link>
                 </div>
             }
         </header>)
