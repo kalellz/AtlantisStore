@@ -5,14 +5,16 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import avatardefault from '../public/avatardefault.png'
 import SetaUser from '../public/SetaUser.svg'
+import configIcon from '../public/configIcon.png'
 
 export default function Header(props) {
     const [user, setUser] = useState([])
+    const [popupConfig, setPopupConfig] = useState(0)
     useEffect(() => {
         if (storage('usuario-logado')) {
             setUser(storage('usuario-logado'))
         }
-        if(!storage('usuario-logado')){
+        if (!storage('usuario-logado')) {
             setUser()
         }
     })
@@ -32,10 +34,13 @@ export default function Header(props) {
             </div>
             }
             {user
-                ? <div className={header.user}>
-                    <Image src={avatardefault} width={40} height={40} className={header.userImage}/>
-                    <Image src={SetaUser} width={10} height={10} className={header.setaUser}/>
-                    </div>
+                ? <div style={{ display: "flex" }}>
+                    <Image src={avatardefault} width={40} height={40} />
+                    {popupConfig == 0
+                        ? <Image src={SetaUser} width={10} height={10} className={header.setaUser} onClick={() => setPopupConfig(1)} />
+                        : <Image src={SetaUser} width={10} height={10} className={header.setaUser} onClick={() => setPopupConfig(0)} />
+                    }
+                </div>
                 : <div className={header.headerbuttons}>
                     <div className={header.headerbutton2}>
                         <Link href="/signup">
@@ -47,6 +52,15 @@ export default function Header(props) {
                     </div>
                     <div className={header.headerbutton1}>
                         <Link href="/login"><button>Entrar agora</button></Link>
+                    </div>
+                </div>
+            }
+            {popupConfig == 0
+                ? <div style={{ position: "absolute" }}></div>
+                : <div className={header.popup}>
+                    <div style={{display:"flex", justifyContent:"space-around",alignItems:"center", width:"7vw", margin:"1em"}}>
+                        <Image src={configIcon} width={20} height={20} style={{filter:"invert(1)"}} />
+                        <Link href="/config">Configurações</Link>
                     </div>
                 </div>
             }

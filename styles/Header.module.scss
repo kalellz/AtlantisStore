@@ -132,20 +132,21 @@
   }
 }
 
-.user {
-  display: flex;
+.setaUser {
+  cursor: pointer;
+  position: absolute;
+  right: 4em;
+  top: 6%;
+}
 
-  .setaUser {
-    cursor: pointer;
-    position: absolute;
-    right: 4em;
-    top: 6%;
-  }
-
-  .userImage {
-    position: relative;
-
-  }
+.popup {
+  position: absolute;
+  padding: 1em;
+  top: 8vh;
+  right: 4em;
+  background: #202020;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 11.3778px 17.0667px rgba(0, 0, 0, 0.1), 0px 1.42222px 4.26667px rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
 }
 
 @media only screen and (max-width: 720px) {
