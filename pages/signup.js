@@ -17,7 +17,6 @@ export default function SignUp() {
     const [disabled, setDisabled] = useState(false)
 
     async function SignClick() {
-        if (event.key == "Enter" || event == "Enter") {
             try {
                 const userCreated = await SignUpCall(name, email, password)
                 storage("usuario-logado", userCreated);
@@ -39,7 +38,6 @@ export default function SignUp() {
                     setErr("");
                 }, 3000);
             }
-        }
     }
     return (
         <main className={logup.SignMain}>

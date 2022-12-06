@@ -15,8 +15,7 @@ export default function Login() {
     const [err, setErr] = useState('')
     const [disabled, setDisabled] = useState(false)
 
-    async function Login(event) {
-        if (event.key == "Enter" || event == "Enter") {
+    async function Login() {
             try {
                 const userCreated = await LoginCall(email, password)
                 storage("usuario-logado", userCreated);
@@ -38,7 +37,6 @@ export default function Login() {
                     setErr("");
                 }, 3000);
             }
-        }
     }
     return (
         <main className={logup.SignMain}>
