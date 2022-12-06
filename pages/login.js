@@ -17,27 +17,7 @@ export default function Login() {
 
     async function LoginEnter(event) {
         if (event.key == "Enter" || event == "Enter") {
-            try {
-                const userCreated = await LoginCall(email, password)
-                storage("usuario-logado", userCreated);
-                setDisabled(true)
-                ref.current.continuousStart()
-                setTimeout(() => {
-                    ref.current.complete();
-                }, 2400);
-                setTimeout(() => {
-                    router.push('/');
-                }, 3000);
-            } catch (err) {
-                ref.current.complete();
-                setDisabled(false);
-                if (err.response.status === 401) {
-                    setErr(err.response.data.erro);
-                }
-                setTimeout(() => {
-                    setErr("");
-                }, 3000);
-            }
+            Login()
         }
     }
     async function Login() {

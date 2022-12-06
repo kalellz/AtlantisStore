@@ -18,27 +18,7 @@ export default function SignUp() {
 
     async function SignEnter(event) {
         if (event.key == "Enter" || event == "Enter") {
-            try {
-                const userCreated = await SignUpCall(name, email, password)
-                storage("usuario-logado", userCreated);
-                setDisabled(true)
-                ref.current.continuousStart()
-                setTimeout(() => {
-                    ref.current.complete();
-                }, 2400);
-                setTimeout(() => {
-                    router.push('/');
-                }, 3000);
-            } catch (err) {
-                ref.current.complete();
-                setDisabled(false);
-                if (err.response.status === 401) {
-                    setErr(err.response.data.erro);
-                }
-                setTimeout(() => {
-                    setErr("");
-                }, 3000);
-            }
+            SignClick()
         }
     }
     async function SignClick() {
