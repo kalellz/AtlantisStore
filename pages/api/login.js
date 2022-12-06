@@ -12,7 +12,7 @@ export default async function login(req, res) {
         if (!user.password) {
             throw new Error('Insira uma senha')
         }
-        const db = await connectToDatabase('mongodb+srv://user:userdefault@cluster0.uox3zbh.mongodb.net/AtlantisStore?retryWrites=true&w=majority')
+        const db = await connectToDatabase(process.env.MONGODB_URI)
         const collection = db.collection('users')
         const response = await collection.findOne(user)
         if (!response)
