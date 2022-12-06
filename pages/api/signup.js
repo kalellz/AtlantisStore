@@ -22,10 +22,11 @@ export default async function signup(req, res) {
         const userExists = await collection.findOne({ email: user.email })
         if (userExists) {
             throw new Error('Email ja está em uso')
+        } else {
+            await collection.insertOne(user)
+            const response = await collection.findOne(user)
+            return res.status(200).send(response)
         }
-        await collection.insertOne(user)
-        const response = await collection.findOne(user)
-        return res.status(200).send(response)
     } catch (err) {
         return res.status(401).send({
             erro: err.message
