@@ -1,7 +1,15 @@
 import logup from '../styles/Logup.module.scss'
 import Link from 'next/link'
+import axios from 'axios'
+import { useState } from 'react'
 
 export default function Login() {
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+
+    function Login(){
+        axios.post('/api/login', {email: email, password: password})
+    }
     return (
         <main className={logup.SignMain}>
             <div className={logup.SignButtonToSignup}>
@@ -19,16 +27,16 @@ export default function Login() {
                 <div className={logup.SignInfos}>
                     <div className={logup.SignInputs}>
                         <div className={logup.form__group}>
-                            <input placeholder="Name" className={logup.form__field} type="email" />
+                            <input placeholder="Name" className={logup.form__field} type="email" value={email} onChange={e => setEmail(e.target.value)} />
                             <label className={logup.form__label} for="name">Email</label>
                         </div>
                         <div class={logup.form__group}>
-                            <input placeholder="Name" className={logup.form__field} type="password" />
+                            <input placeholder="Name" className={logup.form__field} type="password" value={password} onChange={e => setPassword(e.target.value)} />
                             <label className={logup.form__label} for="name">Senha</label>
                         </div>
                     </div>
                     <div className={logup.SignButton}>
-                        <button id="send">
+                        <button id="send" onClick={Login}>
                             <span>Estou Pronto!</span><i></i>
                         </button>
                     </div>

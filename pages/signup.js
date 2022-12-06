@@ -1,7 +1,16 @@
 import logup from '../styles/Logup.module.scss'
 import Link from 'next/link'
+import axios from 'axios'
+import { useState } from 'react'
 
 export default function SignUp(){
+    const [name, setName] = useState()
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+    
+    function SignUp(){
+        axios.post('/api/signup', {name: name, email: email, password: password})
+    }
     return(
         <main className={logup.SignMain}>
             <div className={logup.SignButtonToSignup}>
@@ -19,24 +28,20 @@ export default function SignUp(){
                 <div className={logup.SignInfos}>
                     <div className={logup.SignInputs}>
                         <div className={logup.form__group}>
-                            <input placeholder="Name" className={logup.form__field} type="input" />
+                            <input placeholder="Name" className={logup.form__field} type="input" value={name} onChange={e => setName(e.target.value)} />
                             <label className={logup.form__label}>Nome</label>
                         </div>
                         <div class={logup.form__group}>
-                            <input placeholder="Name" className={logup.form__field} type="input" />
-                            <label className={logup.form__label}>Sobrenome</label>
-                        </div>
-                        <div class={logup.form__group}>
-                            <input placeholder="Name" className={logup.form__field} type="email" />
+                            <input placeholder="Name" className={logup.form__field} type="email" value={email} onChange={e => setEmail(e.target.value)} />
                             <label className={logup.form__label}>Email</label>
                         </div>
                         <div class={logup.form__group}>
-                            <input placeholder="Name" className={logup.form__field} type="password" />
+                            <input placeholder="Name" className={logup.form__field} type="password" value={password} onChange={e => setPassword(e.target.value)} />
                             <label className={logup.form__label}>Senha</label>
                         </div>
                     </div>
                     <div className={logup.SignButton}>
-                        <button id="send">
+                        <button id="send" onClick={SignUp}>
                             <span>Estou Pronto!</span><i></i>
                         </button>
                     </div>
