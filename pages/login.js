@@ -18,9 +18,15 @@ export default function Login() {
     async function Login() {
         try {
             const userCreated = await LoginCall( email, password )
-            storage("usuario-logado", r);
+            storage("usuario-logado", userCreated);
             setDisabled(true)
             ref.current.continuousStart()
+            setTimeout(() => {
+				ref.current.complete();
+			}, 2400);
+			setTimeout(() => {
+				router.push('/');
+			}, 3000);
         } catch (err) {
             ref.current.complete();
             setDisabled(false);
@@ -59,7 +65,7 @@ export default function Login() {
                         </div>
                     </div>
                     <div className={logup.SignButton}>
-                        <button id="send" onClick={Login}>
+                        <button id="send" onClick={Login} disabled={disabled}>
                             <span>Estou Pronto!</span><i></i>
                         </button>
                     </div>

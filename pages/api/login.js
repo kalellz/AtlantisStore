@@ -2,19 +2,22 @@ import connectToDatabase from "./connectToDatabase";
 
 export default async function login(req, res) {
     try {
-        const { email, password } = req.body;
-        if (!email) {
+        const user = {
+            email: req.body.email,
+            password: req.body.password
+        }
+        if (!user.email) {
             throw new Error('Insira um email')
         }
-        if (!password) {
+        if (!user.password) {
             throw new Error('Insira uma senha')
         }
         const db = await connectToDatabase(process.env.MONGODB_URI)
         const collection = db.collection('logins')
-        const resposta = await collection.find({ email: `${email}`, password: `${password}` }).count()
-        if (resposta == 0)
+        const response = await collection.findOne(user)
+        if (!response)
             throw new Error('Usuario Não Encontrado')
-        res.status(200).send()
+        res.status(200).send(response)
     } catch (err) {
         return res.status(401).send({
             erro: err.message
