@@ -1,18 +1,5 @@
-import { MongoClient, Db } from 'mongodb'
-import url from 'url'
+import connectToDatabase from "./connectToDatabase";
 
-async function connectToDatabase(uri) {
-    const client = await MongoClient.connect(uri, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    });
-
-    const dbName = url.parse(uri).pathname.substring(1)
-
-    const db = client.db(dbName)
-
-    return db
-}
 export default async function login(req, res) {
     try {
         const { email, password } = req.body;
@@ -22,7 +9,12 @@ export default async function login(req, res) {
         if (!password) {
             throw new Error('Insira uma senha')
         }
-    {/* FAZER A FUNÇÃO DE LOGIN DPS */}
+        const db = await connectToDatabase(process.env.MONGODB_URI)
+        const collection = db.collection('logins')
+        const resposta = await collection.find({ email: `${email}`, password: `${password}` }).count()
+        if (resposta == 0)
+            throw new Error('Usuario Não Encontrado')
+        res.status(200).send()
     } catch (err) {
         return res.status(401).send({
             erro: err.message

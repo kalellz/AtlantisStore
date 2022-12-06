@@ -1,17 +1,40 @@
 import logup from '../styles/Logup.module.scss'
 import Link from 'next/link'
-import axios from 'axios'
+import LoadingBar from 'react-top-loading-bar'
+import storage from "local-storage";
+import { useRef } from 'react'
+import { LoginCall } from './api/apis'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Login() {
+    const router = useRouter()
+    const ref = useRef(null)
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
+    const [err, setErr] = useState('')
+    const [disabled, setDisabled] = useState(false)
 
-    function Login(){
-        axios.post('/api/login', {email: email, password: password})
+    async function Login() {
+        try {
+            const userCreated = await LoginCall( email, password )
+            storage("usuario-logado", r);
+            setDisabled(true)
+            ref.current.continuousStart()
+        } catch (err) {
+            ref.current.complete();
+            setDisabled(false);
+            if (err.response.status === 401) {
+                setErr(err.response.data.erro);
+            }
+            setTimeout(() => {
+                setErr("");
+            }, 3000);
+        }
     }
     return (
         <main className={logup.SignMain}>
+            <LoadingBar color='#ffffff' ref={ref} />
             <div className={logup.SignButtonToSignup}>
                 <Link href="/signup">
                     <button className={logup.cta}>
@@ -30,7 +53,7 @@ export default function Login() {
                             <input placeholder="Name" className={logup.form__field} type="email" value={email} onChange={e => setEmail(e.target.value)} />
                             <label className={logup.form__label} for="name">Email</label>
                         </div>
-                        <div class={logup.form__group}>
+                        <div className={logup.form__group}>
                             <input placeholder="Name" className={logup.form__field} type="password" value={password} onChange={e => setPassword(e.target.value)} />
                             <label className={logup.form__label} for="name">Senha</label>
                         </div>
@@ -40,6 +63,7 @@ export default function Login() {
                             <span>Estou Pronto!</span><i></i>
                         </button>
                     </div>
+                    {err && <h1 style={{ color: "#FF0000" }}>{err}</h1>}
                 </div>
             </section>
         </main>

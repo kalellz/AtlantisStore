@@ -1,18 +1,42 @@
 import logup from '../styles/Logup.module.scss'
 import Link from 'next/link'
-import axios from 'axios'
+import LoadingBar from 'react-top-loading-bar'
+import { SignUpCall } from './api/apis.js'
+import { useRef } from 'react'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
-export default function SignUp(){
+export default function SignUp() {
+    const router = useRouter()
+    const ref = useRef(null)
     const [name, setName] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
-    
-    function SignUp(){
-        axios.post('/api/signup', {name: name, email: email, password: password})
+    const [err, setErr] = useState('')
+    const [disabled, setDisabled] = useState(false)
+
+    async function SignClick() {
+        try {
+            const userCreated = await SignUpCall(name, email, password)
+            setDisabled(true)
+            ref.current.continuousStart()
+            setTimeout(() => {
+                router.push('/login')
+            }, 3000)
+        } catch (err) {
+            ref.current.complete();
+			setDisabled(false);
+            if (err.response.status === 401) {
+				setErr(err.response.data.erro);
+			}
+            setTimeout(() => {
+				setErr("");
+			}, 3000);
+        }
     }
-    return(
+    return (
         <main className={logup.SignMain}>
+            <LoadingBar color='#ffffff' ref={ref} />
             <div className={logup.SignButtonToSignup}>
                 <Link href="/login">
                     <button className={logup.cta}>
@@ -31,20 +55,21 @@ export default function SignUp(){
                             <input placeholder="Name" className={logup.form__field} type="input" value={name} onChange={e => setName(e.target.value)} />
                             <label className={logup.form__label}>Nome</label>
                         </div>
-                        <div class={logup.form__group}>
+                        <div className={logup.form__group}>
                             <input placeholder="Name" className={logup.form__field} type="email" value={email} onChange={e => setEmail(e.target.value)} />
                             <label className={logup.form__label}>Email</label>
                         </div>
-                        <div class={logup.form__group}>
+                        <div className={logup.form__group}>
                             <input placeholder="Name" className={logup.form__field} type="password" value={password} onChange={e => setPassword(e.target.value)} />
                             <label className={logup.form__label}>Senha</label>
                         </div>
                     </div>
                     <div className={logup.SignButton}>
-                        <button id="send" onClick={SignUp}>
+                        <button id="send" onClick={SignClick} disabled={disabled}>
                             <span>Estou Pronto!</span><i></i>
                         </button>
                     </div>
+                    {err && <h1 style={{color:"#FF0000"}}>{err}</h1>}
                 </div>
             </section>
         </main>

@@ -1,18 +1,5 @@
-import { MongoClient, Db } from 'mongodb'
-import url from 'url'
+import connectToDatabase from "./connectToDatabase";
 
-async function connectToDatabase(uri) {
-    const client = await MongoClient.connect(uri, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    });
-
-    const dbName = url.parse(uri).pathname.substring(1)
-
-    const db = client.db(dbName)
-
-    return db
-}
 export default async function signup(req, res) {
     try {
         const { name, email, password } = req.body;
@@ -27,6 +14,10 @@ export default async function signup(req, res) {
         }
         const db = await connectToDatabase(process.env.MONGODB_URI)
         const collection = db.collection('logins')
+        const userExists = await collection.findOne({ email: email })
+        if (userExists) {
+            throw new Error('Email ja está em uso')
+        }
         await collection.insertOne({
             name,
             email,
