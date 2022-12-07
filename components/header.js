@@ -2,12 +2,15 @@ import header from '../styles/Header.module.scss'
 import Link from 'next/link'
 import storage from 'local-storage'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 import avatardefault from '../public/avatardefault.png'
 import SetaUser from '../public/SetaUser.svg'
 import configIcon from '../public/configIcon.png'
+import exitIcon from '../public/exitIcon.png'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Header(props) {
+    const router = useRouter()
     const [user, setUser] = useState([])
     const [popupConfig, setPopupConfig] = useState(0)
     useEffect(() => {
@@ -59,11 +62,19 @@ export default function Header(props) {
                 ? <div style={{ position: "absolute" }}></div>
                 : <div className={header.popup}>
                     <Link href="/config">
-                        <div style={{ display: "flex", justifyContent: "space-around", alignItems: "center", width: "7vw", margin: "1em" }}>
-                            <Image src={configIcon} width={20} height={20} style={{ filter: "invert(1)" }} />
+                        <div style={{ display: "flex", justifyContent: "flex-start", alignItems: "center", width: "7vw", margin: "1em" }}>
+                            <Image src={configIcon} width={20} height={20} style={{ filter: "invert(1)", marginRight: "1em" }} />
                             Configurações
                         </div>
                     </Link>
+                    <div style={{ cursor: "pointer", display: "flex", justifyContent: "flex-start", alignItems: "center", width: "7vw", margin: "1em" }}
+                        onClick={() => {
+                            storage.remove('usuario-logado')
+                            router.push('/login');
+                        }}>
+                        <Image src={exitIcon} width={20} height={20} style={{ filter: "invert(1)", marginRight: "1em" }} />
+                        Sair
+                    </div>
                 </div>
             }
         </header>)

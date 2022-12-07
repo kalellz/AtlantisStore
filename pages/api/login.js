@@ -16,7 +16,7 @@ export default async function login(req, res) {
         const collection = db.collection('users')
         const response = await collection.findOne(user)
         if (!response)
-            throw new Error('Usuario Não Encontrado')
+            throw new Error('Senha Ou Email Incorretos')
         res.status(200).send(response)
     } catch (err) {
         return res.status(401).send({
