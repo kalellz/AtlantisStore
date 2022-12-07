@@ -69,7 +69,7 @@ export default function Header(props) {
                     <Link href="/config">
                         <div style={{ display: "flex", justifyContent: "flex-start", alignItems: "center", width: "7vw", margin: "1em" }}>
                             <Image src={configIcon} width={20} height={20} style={{ filter: "invert(1)", marginRight: "1em" }} />
-                            Configurações
+                            <p>Configurações</p>
                         </div>
                     </Link>
                     <div style={{ cursor: "pointer", display: "flex", justifyContent: "flex-start", alignItems: "center", width: "7vw", margin: "1em" }}
@@ -110,7 +110,7 @@ export default function Header(props) {
                             })
                         }}>
                         <Image src={exitIcon} width={20} height={20} style={{ filter: "invert(1)", marginRight: "1em" }} />
-                        Sair
+                        <p>Sair</p>
                     </div>
                 </div>
             }

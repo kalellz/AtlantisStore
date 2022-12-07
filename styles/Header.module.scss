@@ -148,6 +148,11 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 11.3778px 17.0667px rgba(0, 0, 0, 0.1), 0px 1.42222px 4.26667px rgba(0, 0, 0, 0.1);
   border-radius: 1em;
 }
+@media only screen and (max-width: 1450px) {
+  .popup{
+    padding: 1em 5em 0em 1em;
+  }
+}
 
 @media only screen and (max-width: 720px) {
   .mainheader {
@@ -161,6 +166,6 @@
   .popup{
     top: 15%;
     right: 40%;
-    padding: 1em 2.5em;
+    padding: 1em 7em 0em 1em;
   }
 }
