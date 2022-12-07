@@ -1,6 +1,6 @@
 import styles from '../styles/Highlights.module.scss'
 
-export default function Products(props){
+export default function Product(props){
     return(
         <div className={styles.product}>
             <div className={styles.image}>
