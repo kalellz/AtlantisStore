@@ -6,6 +6,7 @@ import avatardefault from '../public/avatardefault.png'
 import SetaUser from '../public/SetaUser.svg'
 import configIcon from '../public/configIcon.png'
 import exitIcon from '../public/exitIcon.png'
+import toast, { Toaster } from 'react-hot-toast';
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
@@ -23,6 +24,10 @@ export default function Header(props) {
     })
     return (
         <header className={header.mainheader}>
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
             {props.selected == 'Home' && <div className={header.header}>
                 <h1 style={{ color: '#ED0842' }} className={header.headerlogo}>Atlantis Store</h1>
                 <div className={header.headerlinks}>
@@ -69,8 +74,40 @@ export default function Header(props) {
                     </Link>
                     <div style={{ cursor: "pointer", display: "flex", justifyContent: "flex-start", alignItems: "center", width: "7vw", margin: "1em" }}
                         onClick={() => {
-                            storage.remove('usuario-logado')
-                            router.push('/login');
+                            toast(
+                                (t) => (
+                                    <span>
+                                        Tem certeza que deseja sair?
+                                        <button
+                                            onClick={() => {
+                                                toast.dismiss();
+                                                toast.dismiss(t.id);
+                                                setTimeout(() => {
+                                                    router.push('/login');
+                                                }, 100)
+                                                setTimeout(() => {
+                                                    storage.remove('usuario-logado');
+                                                }, 200)
+                                            }}
+                                            style={{
+                                                cursor: "pointer",
+                                                padding: ".6em 1.2em",
+                                                backgroundColor: "#ED0842",
+                                                color: "#fff",
+                                                border: "none",
+                                                marginLeft: ".5em",
+                                                borderRadius: ".5em",
+                                                fontSize: ".92em",
+                                            }}>
+                                            Sair
+                                        </button>
+                                    </span>
+                                ), {
+                                style: {
+                                    background: '#202020',
+                                    color: '#fff',
+                                }
+                            })
                         }}>
                         <Image src={exitIcon} width={20} height={20} style={{ filter: "invert(1)", marginRight: "1em" }} />
                         Sair
