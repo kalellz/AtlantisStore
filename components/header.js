@@ -21,7 +21,7 @@ export default function Header(props) {
         if (!storage('usuario-logado')) {
             setUser()
         }
-    })
+    }, [])
     return (<header className={header.mainheader}>
         <Toaster
             position="top-center"
@@ -63,13 +63,13 @@ export default function Header(props) {
                     {props.selected == 'Home' && <div className={header.header}>
                         <h1 style={{ color: '#ED0842' }} className={header.headerlogo}>Atlantis Store</h1>
                         <div className={header.headerlinks}>
-                            <a href="/products">Products</a>
+                            <a href="/products">Produtos</a>
                         </div>
                     </div>}
                     {props.selected == 'Products' && <div className={header.header}>
                         <Link href="/" className={header.headerlogo}>Atlantis Store</Link>
                         <div className={header.headerlinks}>
-                            <a href="/products" style={{ color: '#ED0842' }}>Products</a>
+                            <a href="/products" style={{ color: '#ED0842' }}>Produtos</a>
                         </div>
                     </div>
                     }
@@ -79,13 +79,13 @@ export default function Header(props) {
                 {props.selected == 'Home' && <div className={header.header}>
                     <h1 style={{ color: '#ED0842' }} className={header.headerlogo}>Atlantis Store</h1>
                     <div className={header.headerlinks}>
-                        <a href="/products">Products</a>
+                        <a href="/products">Produtos</a>
                     </div>
                 </div>}
                 {props.selected == 'Products' && <div className={header.header}>
                     <Link href="/" className={header.headerlogo}>Atlantis Store</Link>
                     <div className={header.headerlinks}>
-                        <a href="/products" style={{ color: '#ED0842' }}>Products</a>
+                        <a href="/products" style={{ color: '#ED0842' }}>Produtos</a>
                     </div>
                 </div>
                 }

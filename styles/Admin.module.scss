@@ -14,6 +14,10 @@
   }
   
   .maincontent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: #232323;
     width: 95%;
     height: auto;
@@ -124,7 +128,24 @@
       filter: invert(1);
     }
   }
-  
+  .formCreate{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 50%;
+    div{
+      padding: 1em 0;
+      input{
+        font-size: 1em;
+        margin-top: .5em;
+        padding: .5em;
+      }
+    }
+    button{
+        padding: 1em 0;
+    }
+  }
   @media only screen and (max-width: 720px) {
     .maincontent {
       width: 100%;
