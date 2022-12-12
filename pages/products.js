@@ -9,12 +9,16 @@ import { useEffect, useState } from 'react'
 
 export default function Products() {
   const [produtos, setProdutos] = useState([])
+  const [loading, setLoading] = useState(true)
   async function carregarTodosProdutos() {
     const resp = await SearchProducts();
     setProdutos(resp);
   }
   useEffect(() => {
-      carregarTodosProdutos()
+    carregarTodosProdutos()
+    setTimeout(() => {
+      setLoading(false)
+    }, 1500)
   }, []);
   return (
     <div className={styles.container}>
@@ -42,12 +46,21 @@ export default function Products() {
               <option value={0}>Todas Categorias</option>
             </select>
           </div>
-          
-          <div className={styles.mainProducts} >
-            {produtos.map(item => (
-            <Product title={item.title} price={item.price} parcel={item.parcel} image='https://images.tcdn.com.br/img/img_prod/703344/tenis_tesla_coil_x_lokal_black_tiffany_5965_1_98e0131613e465ddbf0499693893e990.jpeg' />
-            ))}
-          </div>
+          {loading == false
+            ? <div className={styles.mainProducts} >
+              {produtos.map(item => (
+                <Product title={item.title} price={item.price} parcel={item.parcel} image='https://images.tcdn.com.br/img/img_prod/703344/tenis_tesla_coil_x_lokal_black_tiffany_5965_1_98e0131613e465ddbf0499693893e990.jpeg' />
+              ))}
+            </div>
+            : <div className={styles.wrapper}>
+              <div className={styles.circle}></div>
+              <div className={styles.circle}></div>
+              <div className={styles.circle}></div>
+              <div className={styles.shadow}></div>
+              <div className={styles.shadow}></div>
+              <div className={styles.shadow}></div>
+            </div>
+          }
         </section>
       </main>
     </div>
