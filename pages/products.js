@@ -18,7 +18,7 @@ export default function Products() {
     carregarTodosProdutos()
     setTimeout(() => {
       setLoading(false)
-    }, 1500)
+    }, 2000)
   }, []);
   return (
     <div className={styles.container}>
@@ -38,7 +38,7 @@ export default function Products() {
           </div>
           <div className={styles.filter}>
             <select className={styles.filterSelect}>
-              <option selected disabled hidden>Filtros</option>
+              <option disabled hidden selected value={0}>Filtros</option>
               <option value={1}>Tênis</option>
               <option value={2}>Camisetas</option>
               <option value={3}>Bonés</option>
