@@ -23,3 +23,7 @@ export async function CreateProduct(title, price, parcel) {
     })
     return r.data
 }
+export async function searchProducts() {
+    const r = await axios.get('/api/product/searchProducts')
+    return r
+}

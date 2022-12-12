@@ -1,4 +1,4 @@
-import connectToDatabase from "./connectToDatabase";
+import connectToDatabase from "../../services/dbConnect.js";
 
 export default async function signup(req, res) {
     try {

@@ -19,13 +19,13 @@ export default function Home() {
             <h1 style={{fontSize: "2em"}}>SEJA <span style={{ color: "#ED0842" }}>BEM VINDO</span>!</h1>
           </div>
           <div>
-            <h5 style={{ marginLeft: "1em" }}>Categorias</h5>
+            <h3 style={{ marginLeft: "1em" }}>Categorias</h3>
             <div>
               <Categorias />
             </div>
           </div>
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection:"column" }}>
-            <h5 style={{ marginLeft: "1em" }}>Produtos em destaque</h5>
+            <h3 style={{ marginLeft: "1em" }}>Produtos em destaque</h3>
             <div>
               <Highlights />
             </div>
