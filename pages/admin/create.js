@@ -22,7 +22,7 @@ export default function Create() {
             setDisabled(true)
             await CreateProduct(
                 title.current.value,
-                price.current.value,
+                Number(price.current.value),
                 `${parcel.current.value}x de R$ ${((price.current.value / parcel.current.value).toFixed(2)).toString().replace(".", ",")}`)
             ref.current.continuousStart()
             setTimeout(() => {
