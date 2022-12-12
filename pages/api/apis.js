@@ -15,5 +15,7 @@ export async function SignUpCall(name, email, password) {
     })
     return r.data
 }
-
-
+export async function CreateProduct(product) {
+    const r = await axios.post('/api/product/createProduct', product)
+    return r.data
+}

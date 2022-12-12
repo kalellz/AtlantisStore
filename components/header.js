@@ -28,7 +28,8 @@ export default function Header(props) {
             reverseOrder={false}
         />
         {user
-            ? <div>{user.admin
+            ? <div>
+                {user.admin
                 ? <div>{props.selected == 'Home' && <div className={header.header}>
                     <h1 style={{ color: '#ED0842' }} className={header.headerlogo}>Atlantis Store</h1>
                     <div className={header.headerlinks}>
