@@ -4,6 +4,7 @@ import styles from '../styles/Products.module.scss'
 import Header from '../components/header'
 import Product from '../components/productsHigh'
 import searchIcon from '../public/searchIcon.svg'
+import Loading from '../components/loading'
 import { SearchProducts } from './api/apis'
 import { useEffect, useState } from 'react'
 
@@ -52,14 +53,7 @@ export default function Products() {
                 <Product title={item.title} price={item.price} parcel={item.parcel} image='https://images.tcdn.com.br/img/img_prod/703344/tenis_tesla_coil_x_lokal_black_tiffany_5965_1_98e0131613e465ddbf0499693893e990.jpeg' />
               ))}
             </div>
-            : <div className={styles.wrapper}>
-              <div className={styles.circle}></div>
-              <div className={styles.circle}></div>
-              <div className={styles.circle}></div>
-              <div className={styles.shadow}></div>
-              <div className={styles.shadow}></div>
-              <div className={styles.shadow}></div>
-            </div>
+            : <Loading />
           }
         </section>
       </main>
