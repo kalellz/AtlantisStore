@@ -23,7 +23,7 @@ export async function CreateProduct(title, price, parcel) {
     })
     return r.data
 }
-export async function searchProducts() {
+export async function SearchProducts() {
     const r = await axios.get('/api/product/searchProducts')
-    return r
+    return r.data
 }

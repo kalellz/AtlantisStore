@@ -4,8 +4,20 @@ import styles from '../styles/Products.module.scss'
 import Header from '../components/header'
 import Product from '../components/productsHigh'
 import searchIcon from '../public/searchIcon.svg'
+import { SearchProducts } from './api/apis'
+import { useEffect, useState } from 'react'
 
 export default function Products() {
+  const [produtos, setProdutos] = useState([]);
+  async function carregarTodosProdutos() {
+    const resp = await SearchProducts();
+    setProdutos(resp);
+  }
+  useEffect(() => {
+    setTimeout(() => {
+      carregarTodosProdutos();
+    }, [])
+  }, []);
   return (
     <div className={styles.container}>
       <Head>
@@ -33,7 +45,9 @@ export default function Products() {
             </select>
           </div>
           <div className={styles.mainProducts}>
-            <Product title="TÊNIS TESLA COIL X LOKAL BLACK TIFFANY" price={280} parcel="6x de R$ 46,67" image='https://images.tcdn.com.br/img/img_prod/703344/tenis_tesla_coil_x_lokal_black_tiffany_5965_1_98e0131613e465ddbf0499693893e990.jpeg' />
+            {produtos.map(item => (
+            <Product title={item.title} price={item.price} parcel={item.parcel} image='https://images.tcdn.com.br/img/img_prod/703344/tenis_tesla_coil_x_lokal_black_tiffany_5965_1_98e0131613e465ddbf0499693893e990.jpeg' />
+            ))}
           </div>
         </section>
       </main>
