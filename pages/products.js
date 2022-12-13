@@ -53,8 +53,7 @@ export default function Products() {
                 <Product title={item.title} price={item.price} parcel={item.parcel} image='https://images.tcdn.com.br/img/img_prod/703344/tenis_tesla_coil_x_lokal_black_tiffany_5965_1_98e0131613e465ddbf0499693893e990.jpeg' />
               ))}
             </div>
-            : <Loading />
-          }
+            : <Loading />}
         </section>
       </main>
     </div>

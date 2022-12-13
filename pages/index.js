@@ -15,7 +15,7 @@ export default function Home() {
       <main className={styles.main}>
         <section className={styles.maincontent}>
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <h1 style={{fontSize: "2em"}}>SEJA <span style={{ color: "#ED0842" }}>BEM VINDO</span>!</h1>
+            <h1 style={{ fontSize: "2em" }}>SEJA <span style={{ color: "#ED0842" }}>BEM VINDO</span>!</h1>
           </div>
           <div>
             <h3 style={{ marginLeft: "1em" }}>Categorias</h3>
@@ -23,7 +23,7 @@ export default function Home() {
               <Categorias />
             </div>
           </div>
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection:"column" }}>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
             <h3 style={{ marginLeft: "1em" }}>Produtos em destaque</h3>
             <div>
               <Highlights />
