@@ -179,6 +179,7 @@
 
     .SignButtonToSignup {
         width: 50%;
+
         .cta {
             border: none;
             background: none;
@@ -230,9 +231,29 @@
             transform-origin: bottom left;
         }
     }
-    .SignErro{
+
+    .SignErro {
         color: red;
-        font-family:'Arimo-Bold';
+        font-family: 'Arimo-Bold';
         font-size: 1.1em;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .SignMain {
+        section {
+            width: 100vw;
+            .SignInfos {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                width: 75%;
+                height: 70%;
+                .SignInputs {
+                    .form__group {
+                        width: 80vw;
+                    }}}
+        }
     }
 }

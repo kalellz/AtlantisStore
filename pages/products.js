@@ -31,7 +31,7 @@ export default function Products() {
       <main className={styles.main}>
         <section className={styles.maincontent}>
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <h1 style={{ fontSize: "2em" }}>BUSCA DE <span style={{ color: "#ED0842" }}>PRODUTOS</span>!</h1>
+            <h1 style={{ fontSize: "1.5em" }}>BUSCA DE <span style={{ color: "#ED0842" }}>PRODUTOS</span>!</h1>
           </div>
           <div className={styles.bigInput}>
             <input type="text" placeholder="Buscar Produtos" />
